@@ -110,7 +110,7 @@ window#waybar {
 #language:hover,
 #battery,
 #battery:hover {
-  min-width: 40px;
+  min-width: 30px;
   background-color: transparent;
   /* background-color: #77A; */
 }
@@ -171,10 +171,6 @@ window#waybar {
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-
-/* #custom-restartnm {
-  background-color: #a60;
-} */
 
 #custom-restartnm:hover {
   animation-name: blink;
