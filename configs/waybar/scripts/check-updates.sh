@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if ! updates=$(checkupdates 2> /dev/null | wc -l); then
+    updates=0
+fi
+
+# updates=10
+
+if [ "$updates" -gt 0 ]; then
+    echo " $updates"
+else
+    echo ""
+fi

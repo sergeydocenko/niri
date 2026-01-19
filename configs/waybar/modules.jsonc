@@ -1,0 +1,210 @@
+{
+    "group/hwinfo": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500
+        },
+        "modules": [
+            "custom/arrow",
+            "cpu",
+            "memory",
+            "temperature",
+            "battery",
+            "network"
+        ]
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "current-only": false,
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9 ",
+            "10": "0 ",
+            // Icons by state
+            "urgent": "",
+            // "focused": "",
+            "default": ""
+        }
+    },
+    "niri/window": {
+        /*"format": "{class} • {title}",*/
+        "format": "{title}",
+        "separate-outputs": true,
+        "icon": true,
+        "expand": true,
+        "tooltip": false,
+    },
+    "clock": {
+        "interval": 1,
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d (%a) %H:%M:%S}",
+        "tooltip": false,
+        "on-click-middle": "firefox https://calendar.google.com/",
+        "on-click-right": "firefox https://time.is/"
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 6,
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "{icon}{volume}%",
+        "format-muted": " ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [
+                " ",
+                " ",
+                " "
+            ]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "tooltip": false
+        /*"tooltip-format": "Volume: {volume}%"*/
+    },
+    "backlight": {
+        "format": "{icon}{percent}%",
+        // "format-alt": "{percent}% {icon}",
+        // "format-alt-click": "click-right",
+        "format-icons": [
+            "󱩎",
+            "󱩏",
+            "󱩐",
+            "󱩑",
+            "󱩒",
+            "󱩓",
+            "󱩔",
+            "󱩕",
+            "󱩖",
+            "󰛨"
+        ],
+        "on-scroll-up": "brightnessctl set 5%+",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "smooth-scrolling-threshold": "2400",
+        "tooltip": false,
+        "tooltip-format": "Brightness: {percent}%"
+    },
+    "network": {
+        "format-wifi": "{icon} {essid}: {signalStrength}% {bandwidthDownBytes}",
+        "format-disconnected": "󰤭 Disconnected",
+        "interval": 10,
+        "tooltip": false,
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "{usage}%",
+        "max-length": 10,
+        "tooltip": false,
+        // "on-click-right": "hyprctl dispatch togglespecialworkspace SPHtop"
+    },
+    "memory": {
+        "interval": 5,
+        "format": "{used:0.1f}G",
+        "max-length": 10,
+        "tooltip": false,
+        // "on-click-right": "hyprctl dispatch togglespecialworkspace SPHtop"
+    },
+    "temperature": {
+        "format": "{temperatureC}°C",
+        "max-length": 10,
+        "tooltip": false,
+        // "on-click-right": "hyprctl dispatch togglespecialworkspace SPHtop"
+    },
+    "battery": {
+        "tooltip": false
+    },
+    "niri/language": {
+        "format": " {}",
+        "format-en": "EN",
+        "format-ru": "RU",
+        "format-uk": "UA"
+    },
+    "custom/arrow": {
+        "format": "🞀",
+        "tooltip": false
+    },
+    "custom/weather": {
+        "exec": "~/.config/niri/configs/waybar/scripts/weather.sh bar",
+        "interval": 600,
+        "format": "{}",
+        "tooltip": false,
+        "tooltip-format": "Weather: Lubotin",
+        "on-click": "firefox https://sinoptik.ua/погода-люботин",
+        "on-click-right": "~/.config/niri/configs/waybar/scripts/weather.sh notify"
+    },
+    "custom/close": {
+        "format": "x",
+        "tooltip": false,
+        "on-click": "~/.config/niri/configs/waybar/scripts/close-active-window.sh"
+    },
+    "custom/restartnm": {
+        "format": "⟳",
+        "tooltip": false,
+        "on-click": "~/.config/niri/configs/waybar/scripts/restart-network-manager.sh"
+    },
+    "custom/dpms": {
+        "format": "S",
+        "tooltip": false,
+        "on-click": "niri msg action power-off-monitors"
+    },
+    "custom/red": {
+        "exec": "~/.config/niri/configs/waybar/scripts/gamma.sh check",
+        "return-type": "json",
+        "interval": 5,
+        /*"format": "R",*/
+        "tooltip": false,
+        "on-click": "~/.config/niri/configs/waybar/scripts/gamma.sh toggle"
+    },
+    "custom/battery-mouse": {
+        "exec": "~/.config/niri/configs/waybar/scripts/mouse-battery.sh",
+        "interval": 60
+    },
+    "custom/battery-asus": {
+        "exec": "~/.config/niri/configs/waybar/scripts/asus-battery.sh",
+        "interval": 60
+    },
+    "custom/check-updates": {
+        "exec": "~/.config/niri/configs/waybar/scripts/check-updates.sh",
+        "interval": 600,
+        "tooltip": false
+    },
+    "image#alacritty": {
+        "path": "/home/bams/.config/hypr/configs/waybar/icons/alacritty.png",
+        "size": 24,
+        "on-click": "alacritty"
+    },
+    "image#firefox": {
+        "path": "/home/bams/.config/hypr/configs/waybar/icons/firefox.png",
+        "size": 24,
+        "on-click": "firefox",
+        "on-click-right": "firefox --private-window"
+    },
+    "image#vscode": {
+        "path": "/home/bams/.config/hypr/configs/waybar/icons/vscode.png",
+        "size": 24,
+        "on-click": "code"
+    },
+    "image#obsidian": {
+        "path": "/home/bams/.config/hypr/configs/waybar/icons/obsidian.png",
+        "size": 24,
+        "on-click": "obsidian"
+    },
+    "image#audacious": {
+        "path": "/home/bams/.config/hypr/configs/waybar/icons/audacious.png",
+        "size": 24,
+        "on-click": "hyprctl dispatch togglespecialworkspace SPAudacious"
+    }
+}

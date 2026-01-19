@@ -1,0 +1,46 @@
+[
+  {
+    "include": "~/.config/niri/configs/waybar/modules.jsonc",
+    "layer": "top",
+    "position": "top",
+
+    //"height": 16,
+    "spacing": 0,
+    "modules-left": ["keyboard-layout","niri/workspaces"],
+    "modules-center": ["niri/window"],
+    "modules-right": [
+      "custom/weather",
+      "clock",
+      "niri/language",
+      
+      "group/hwinfo",
+      "custom/check-updates",
+      "custom/battery-mouse",
+      "custom/battery-asus",
+      "custom/close",
+    ],
+  },
+  {
+    "include": "~/.config/niri/configs/waybar/modules.jsonc",
+    "layer": "top",
+    "position": "bottom",
+    // "height": 32,
+    "spacing": 0,
+    "modules-left": [
+      "image#audacious",
+      "image#alacritty",
+      "image#firefox",
+      "image#vscode",
+      "image#obsidian",
+    ],
+    "modules-right": [
+      "pulseaudio",
+      "backlight",
+      //"battery",
+      "custom/red",
+      "custom/dpms",
+      "custom/restartnm",
+      "tray",
+    ],
+  },
+]

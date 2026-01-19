@@ -1,0 +1,272 @@
+* {
+  font-family: SF Pro Display, Twemoji, Symbols Nerd Font;
+  font-size: 18px;
+  font-style: normal;
+
+  border: none;
+  border-radius: 0;
+
+  margin: 0;
+  padding: 0;
+
+}
+
+window#waybar {
+    background: rgba(255,255,255, 0.3);
+}
+
+#workspaces {
+  margin-left:  0.5rem;
+  margin-right: 0.5rem;
+  font-weight:  800;
+}
+
+#workspaces button {
+  color: #000;
+  background-color: transparent;
+  padding:       0.0rem 0.6rem;
+  margin:        0.1rem 0.2rem;
+  margin-top:    0.25rem;
+  margin-bottom: 0.25rem;
+  min-width:     1.0rem;
+  border-radius: 0.5rem;
+  opacity: 1;
+}
+
+#workspaces button.empty {
+  color: #444;
+}
+
+#workspaces button.active {
+  background-color: #f90;
+}
+
+#window {
+  color: #000;
+  padding: 0 16px;
+  font-weight: 800;
+}
+
+#window:hover {
+  box-shadow: 0 0 10rem #FFF;
+}
+
+/* ---------------------------------------- */
+
+#tray,
+#backlight,
+#battery,
+#clock,
+#cpu,
+#memory,
+#language,
+#temperature,
+#custom-arrow,
+#custom-weather,
+#custom-check-updates,
+#custom-close,
+#custom-restartnm,
+#custom-dpms,
+#custom-red,
+#custom-battery-asus,
+#custom-battery-mouse,
+#network,
+#pulseaudio {
+  color: #000;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 0px 10px;
+  margin: 3px 2px;
+  min-width: 30px;
+  font-weight: 900;
+  /* font-weight: 800; */
+}
+
+#tray:hover,
+#backlight:hover,
+#battery:hover,
+#clock:hover,
+#temperature:hover,
+#custom-weather:hover,
+#network:hover,
+#pulseaudio:hover {
+  background-color: #bbb;
+}
+
+#custom-arrow {
+  min-width: 10px;
+  padding: 3px;
+}
+
+#cpu,
+#cpu:hover,
+#memory,
+#memory:hover,
+#temperature,
+#temperature:hover,
+#network,
+#network:hover,
+#language,
+#language:hover,
+#battery,
+#battery:hover {
+  min-width: 40px;
+  background-color: transparent;
+  /* background-color: #77A; */
+}
+
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#network:hover,
+#language:hover,
+#battery:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+#custom-check-updates {
+  background-color: #080;
+}
+
+#custom-check-updates:hover {
+  background-color: #0b0;
+}
+
+@keyframes blink {
+  to {
+    background-color: #f00;
+  }
+}
+
+#custom-red,
+#custom-dpms,
+#custom-restartnm {
+  padding: 1px;
+}
+
+
+#custom-red.active {
+  color: #FA0;
+}
+
+#custom-red.inactive {
+}
+
+#custom-red:hover {
+  animation-name: blink;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-close {
+  padding: 1px;
+}
+
+#custom-close:hover {
+  animation-name: blink;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+/* #custom-restartnm {
+  background-color: #a60;
+} */
+
+#custom-restartnm:hover {
+  animation-name: blink;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink-dpms {
+  to {
+    background-color: #fa0;
+  }
+}
+
+#custom-red:hover,
+#custom-dpms:hover {
+  animation-name: blink-dpms;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#custom-weather {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#custom-battery-asus,
+#custom-battery-mouse {
+  background-color: #c00;
+}
+
+#custom-battery-asus:hover,
+#custom-battery-mouse:hover {
+  background-color: #f00;
+}
+
+#image {
+  margin: 1px 1px 1px 1px;
+  padding: 1px 1px;
+  margin-right: 3px;
+  border-radius: 6px;
+  background-color: #666;
+}
+
+#image:hover {
+  background-color: #fff;
+  box-shadow: 2px 2px #fa0;
+}
+
+#battery.warning:not(.charging) {
+  background-color: #f00;
+  color: #ffffff;
+}
+
+#battery.critical:not(.charging) {
+  background-color: #f00;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.3s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#tray {
+  background-color: transparent;
+}
+
+#tray menu {
+  background-color: #32302f;
+  border: 1px solid #905b15;
+  color: #d4be98;
+  font-size: 22px;
+  padding: 4px;
+}
+
+#tray menu menuitem {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 22px;
+}
+
+#tray menu menuitem:hover {
+  background-color: #6d4c23;
+}
+
+tooltip {
+  background-color: #32302f;
+  border: 1px solid #905b15;
+  color: #d4be98;
+}
+

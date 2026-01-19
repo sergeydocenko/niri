@@ -1,0 +1,17 @@
+#!/bin/bash
+
+killall nm-applet
+nm-applet&
+
+killall udiskie
+udiskie --smart-tray --notify --automount &
+
+killall swaybg
+swaybg --image "$XDG_CACHE_HOME/hyprland_wallpaper.jpg"&
+
+killall wl-paste
+wl-paste --type text --watch cliphist store&
+
+killall mako
+mako --config "$HOME/.config/niri/configs/mako/config"&
+

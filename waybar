@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+WAYBAR_CONFIG="$HOME/.config/niri/configs/waybar/waybar.jsonc"
+WAYBAR_STYLE="$HOME/.config/niri/configs/waybar/waybar.css"
+
+if pgrep -x "waybar" >/dev/null; then
+	killall waybar
+fi
+
+waybar --config ${WAYBAR_CONFIG} --style ${WAYBAR_STYLE} &

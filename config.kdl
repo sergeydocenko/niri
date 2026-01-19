@@ -1,0 +1,224 @@
+// https://yalter.github.io/niri/Configuration:-Introduction
+
+environment {
+    XDG_SESSION_TYPE    "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+
+    XDG_CONFIG_HOME "/home/bams/.config"
+    XDG_CACHE_HOME  "/home/bams/.local/cache"
+    XDG_DATA_HOME   "/home/bams/.local/share"
+    XDG_STATE_HOME  "/home/bams/.local/state"
+
+    DISPLAY ":1"
+    QT_SCALE_FACTOR "1.3"
+    XCURSOR_SIZE "24"
+    LC_TIME "ru_UA.UTF-8"
+
+    GDK_BACKEND "wayland,x11,*"
+    GDK_DPI_SCALE "1"
+    GDK_SCALE "1"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_QPA_PLATFORMTHEME "gtk3"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+}
+
+output "eDP-1" {
+    mode "1280x720"
+    scale 1.4
+    transform "normal"
+    position x=0 y=0
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ru,ua"
+            options "grp:caps_toggle,grp_led:caps"
+        }
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        accel-speed 0.2
+        accel-profile "flat"
+        scroll-method "two-finger"
+        // disabled-on-external-mouse
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "no-scroll"
+    }
+}
+
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 10000
+}
+
+prefer-no-csd
+
+layout {
+    gaps 16    
+    background-color "transparent"
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.3
+        proportion 0.5
+        proportion 0.6
+        proportion 1.0
+    }
+
+    default-column-width { 
+        proportion 0.5; 
+    }
+
+    preset-window-heights { 
+        proportion 0.3
+        proportion 0.5
+        proportion 0.7
+    }
+
+    focus-ring {
+        off
+    }
+
+    border {
+        width 3
+        active-color "#fa0"
+        inactive-color "#666"
+        urgent-color "#F00"
+    }
+
+    shadow {
+        on
+        draw-behind-window false
+        softness 20
+        spread 5
+        offset x=0 y=5
+        color "#000"
+    }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+animations {
+    slowdown 1
+}
+
+overview {
+    zoom 0.5
+    workspace-shadow {
+        softness 40
+        spread   10
+        offset   x=0 y=10
+        color "#7fc8ff50"
+    }
+}
+
+// All windows rounded
+window-rule {
+    geometry-corner-radius 5
+    clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="^notifications$"
+    opacity 1.0
+    geometry-corner-radius 25
+}
+
+
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
+binds {
+    Ctrl+Alt+Backspace { quit; }
+    Ctrl+Alt+S         { power-off-monitors; }
+    Mod+Escape         { toggle-keyboard-shortcuts-inhibit; }
+
+    Ctrl+Alt+w         { spawn-sh "~/.config/niri/waybar"; }
+    Ctrl+Alt+Delete    { spawn-sh "~/.config/niri/autorun"; }
+
+    Mod+V { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons| cliphist decode | wl-copy"; }
+
+    Mod+O       { toggle-overview; }
+
+    Mod+Return  { spawn-sh "kitty --config ~/.config/hypr/configs/kitty/kitty.conf"; } 
+    Mod+Space   { spawn-sh "pkill rofi || rofi -show drun -show-icons -matching fuzzy"; } 
+
+    Mod+X       { close-window; }
+
+    Mod+Z       { maximize-column; }
+    Mod+Shift+Z { fullscreen-window; }
+
+    Mod+F       { toggle-window-floating; }
+    Mod+Shift+F { switch-focus-between-floating-and-tiling; }
+
+    Mod+T       { toggle-column-tabbed-display; }
+
+    Mod+W       { switch-preset-column-width; }
+    Mod+Shift+W { switch-preset-window-height; }
+    
+    Mod+R       { reset-window-height; }
+
+    Mod+H       { focus-column-left; }
+    Mod+J       { focus-window-or-workspace-down; }
+    Mod+K       { focus-window-or-workspace-up; }
+    Mod+L       { focus-column-right; }
+
+    Mod+Shift+H { set-column-width "-10%"; }
+    Mod+Shift+J { set-window-height "+10%"; }
+    Mod+Shift+K { set-window-height "-10%"; }
+    Mod+Shift+L { set-column-width "+10%"; }
+
+    Mod+Ctrl+H  { consume-or-expel-window-left; }
+    Mod+Ctrl+J  { move-window-down-or-to-workspace-down; }
+    Mod+Ctrl+K  { move-window-up-or-to-workspace-up; }
+    Mod+Ctrl+L  { consume-or-expel-window-right; }
+
+    Mod+Ctrl+Shift+J   { move-workspace-down; }
+    Mod+Ctrl+Shift+K   { move-workspace-up; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+BracketLeft  { switch-layout "prev"; }
+    Mod+BracketRight { switch-layout "next"; }
+}
+
+spawn-sh-at-startup "~/.config/niri/autorun";

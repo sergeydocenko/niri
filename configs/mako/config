@@ -1,0 +1,12 @@
+# Background: dark glass (RGBA)
+background-color=#1e1e2e
+
+# Text
+text-color=#cdd6f4
+
+# Border (subtle)
+border-color=#89b4fa55
+
+font=monospace 14
+height=800
+width=500
