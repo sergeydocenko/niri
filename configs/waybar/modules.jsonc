@@ -139,7 +139,8 @@
         ]
     },
     "niri/language": {
-        "format": " {}",
+        //"format": " {}",
+        "format": "{}",
         "format-en": "EN",
         "format-ru": "RU",
         "format-uk": "UA"
