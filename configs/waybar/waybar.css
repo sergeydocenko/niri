@@ -41,6 +41,11 @@ window#waybar {
   background-color: #f90;
 }
 
+#workspaces button.urgent {
+  color: #000;
+  background-color: #F00;
+}
+
 #window {
   color: #000;
   padding: 0 16px;
