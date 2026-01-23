@@ -1,26 +1,39 @@
 // https://yalter.github.io/niri/Configuration:-Introduction
 
 environment {
+    DISPLAY ":1"
+
     XDG_SESSION_TYPE    "wayland"
-    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_DESKTOP "Niri"
+    XDG_CURRENT_DESKTOP "Niri"
 
     XDG_CONFIG_HOME "/home/bams/.config"
     XDG_CACHE_HOME  "/home/bams/.local/cache"
     XDG_DATA_HOME   "/home/bams/.local/share"
     XDG_STATE_HOME  "/home/bams/.local/state"
 
-    DISPLAY ":1"
-    QT_SCALE_FACTOR "1.3"
     XCURSOR_SIZE "24"
     LC_TIME "ru_UA.UTF-8"
 
     GDK_BACKEND "wayland,x11,*"
     GDK_DPI_SCALE "1"
     GDK_SCALE "1"
+
+    QT_SCALE_FACTOR "1.3"
     QT_AUTO_SCREEN_SCALE_FACTOR "1"
     QT_QPA_PLATFORM "wayland;xcb"
     QT_QPA_PLATFORMTHEME "gtk3"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
+    // SDL_VIDEODRIVER "wayland,x11,*"
+    SDL_VIDEODRIVER "x11"
+    // SDL_VIDEODRIVER "wayland,x11,*"
+    // SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY "0"
+    // SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS "0"
+    // SDL_VIDEODRIVER "wayland,x11,windows"
+    // SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS "0"
+    // SDL_VIDEODRIVER "x11,wayland"
+    // SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS "0"
 }
 
 output "eDP-1" {
@@ -31,6 +44,7 @@ output "eDP-1" {
 }
 
 input {
+    disable-power-key-handling
     keyboard {
         xkb {
             layout "us,ru,ua"
@@ -71,20 +85,21 @@ layout {
     center-focused-column "never"
 
     preset-column-widths {
-        proportion 0.3
+        proportion 0.333
         proportion 0.5
-        proportion 0.6
+        proportion 0.666
         proportion 1.0
     }
 
     default-column-width { 
-        proportion 0.5; 
+        proportion 1.0; 
     }
 
     preset-window-heights { 
-        proportion 0.3
+        proportion 0.333
         proportion 0.5
-        proportion 0.7
+        proportion 0.666
+        proportion 1.0
     }
 
     focus-ring {
@@ -117,14 +132,38 @@ animations {
 }
 
 overview {
-    zoom 0.5
+    zoom 0.3
+    backdrop-color "#000757"
     workspace-shadow {
-        softness 40
-        spread   10
-        offset   x=0 y=10
-        color "#7fc8ff50"
+        softness 800    
+        spread   300
+        offset   x=10 y=10
+        color    "#000A"
     }
 }
+
+recent-windows {
+    debounce-ms 750
+    open-delay-ms 250
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 5
+    }
+
+    previews {
+        max-height 640
+        max-scale 0.4
+    }
+
+    binds {
+        Mod+Tab         { next-window; }
+        Mod+Shift+Tab   { previous-window; }
+    }
+}
+
 
 // All windows rounded
 window-rule {

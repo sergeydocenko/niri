@@ -15,3 +15,7 @@ wl-paste --type text --watch cliphist store&
 killall mako
 mako --config "$HOME/.config/niri/configs/mako/config"&
 
+killall xwayland-satellite
+xwayland-satellite &
+
+"$HOME/.config/niri/waybar"
