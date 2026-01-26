@@ -1,21 +1,22 @@
 #!/bin/bash
 
-killall nm-applet
-nm-applet&
+# killall Flag,Purpose
+# -I,Ignore case. Useful if you aren't sure if it's App1 or app1.
+# -v,Verbose. It will report whether the signal was successfully sent.
+# -9,"Force kill. Sends SIGKILL, which forces the app to close immediately without saving data."
+# -w,Wait. Waits for all killed processes to actually die before the command finishes.
 
-killall udiskie
+killall -w nm-applet udiskie swaybg wl-paste mako
+
+# killall -w xwayland-satellite
+# xwayland-satellite &
+
+nm-applet &
 udiskie --smart-tray --notify --automount &
-
-killall swaybg
-swaybg --image "$XDG_CACHE_HOME/hyprland_wallpaper.jpg"&
-
-killall wl-paste
-wl-paste --type text --watch cliphist store&
-
-killall mako
-mako --config "$HOME/.config/niri/configs/mako/config"&
-
-killall xwayland-satellite
-xwayland-satellite &
+swaybg --image "$XDG_CACHE_HOME/hyprland_wallpaper.jpg" &
+wl-paste --type text --watch cliphist store &
+# Store mouse selection
+#wl-paste --primary --type text --watch cliphist store &
+mako --config "$HOME/.config/niri/configs/mako/config" &
 
 "$HOME/.config/niri/waybar"

@@ -10,3 +10,6 @@ border-color=#89b4fa55
 font=monospace 14
 height=800
 width=500
+
+# Time is in milliseconds (e.g., 5000 = 5 seconds)
+default-timeout=5000

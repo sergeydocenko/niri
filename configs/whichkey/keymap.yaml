@@ -1,0 +1,107 @@
+font: mono 20
+
+background: "#282828"
+border:     "#ffaa00"
+corner_r:   8
+
+#anchor: "bottom-right"
+anchor: "center"
+#inhibit_compositor_keyboard_shortcuts: true
+
+menu:
+  - key: " "
+    desc: Rofi
+    cmd: "rofi -show drun -show-icons -matching fuzzy"
+  - key: "b"  
+    desc: Firefox
+    cmd: "firefox"
+  - key: "B"  
+    desc: Firefox (Private)
+    cmd: "firefox --private-window"
+  - key: "c"
+    desc: Code
+    cmd: code
+  - key: "q"
+    desc: Power
+    submenu:
+      - key: "x"
+        desc: Power Off
+        cmd: poweroff
+      - key: "r"
+        desc: Reboot
+        cmd: reboot
+      - key: "s"
+        desc: DPMS Off
+        cmd: niri msg action power-off-monitors 
+      - key: "n"
+        desc: Redshift
+        cmd: pkill gammastep || gammastep -O 5000 &  
+      - key: "b"
+        desc: Brightness
+        submenu:
+          - key: "1"
+            desc: "10%"  
+            cmd: brightnessctl set 10%
+          - key: "2"
+            desc: "20%"  
+            cmd: brightnessctl set 20%
+          - key: "3"
+            desc: "30%"  
+            cmd: brightnessctl set 30%
+          - key: "4"
+            desc: "40%"  
+            cmd: brightnessctl set 40%
+          - key: "5"
+            desc: "50%"  
+            cmd: brightnessctl set 50%
+          - key: "6"
+            desc: "60%"  
+            cmd: brightnessctl set 60%
+          - key: "7"
+            desc: "70%"  
+            cmd: brightnessctl set 70%
+          - key: "8"
+            desc: "80%"  
+            cmd: brightnessctl set 80%
+          - key: "9"
+            desc: "90%"  
+            cmd: brightnessctl set 90%
+          - key: "0"
+            desc: "100%"  
+            cmd: brightnessctl set 100%
+      - key: "v"
+        desc: Volume
+        submenu:
+          - key: "0"
+            desc: "100%"  
+            cmd: brightnessctl set 100%
+  - key: "p"
+    desc: Player
+    submenu:
+      - key: "x"
+        desc: Close Audacious
+        cmd: killall audacious
+      - key: "p"
+        desc: Play/Pause
+        cmd: pgrep audacious > /dev/null && playerctl -p audacious play-pause || audacious
+      - key: "["        
+        desc: Prev
+        cmd: playerctl previous
+      - key: "]"        
+        desc: Next
+        cmd: playerctl next
+  - key: "g"
+    desc: Games
+    submenu:
+      - key: "t"
+        desc: Terraria
+        cmd: ~/games/terraria/game/Terraria.bin.x86_64
+  - key: "i"
+    desc: Info
+    submenu:
+    - key: "w"
+      desc: Weather
+      cmd: ~/.config/niri/configs/waybar/scripts/weather.sh notify
+    - key: "W"
+      desc: Weather in browser
+      cmd: firefox https://sinoptik.ua/погода-люботин

@@ -85,14 +85,14 @@ layout {
     center-focused-column "never"
 
     preset-column-widths {
-        proportion 0.333
+        proportion 0.3
         proportion 0.5
-        proportion 0.666
+        proportion 0.6
         proportion 1.0
     }
 
     default-column-width { 
-        proportion 1.0; 
+        proportion 0.6 
     }
 
     preset-window-heights { 
@@ -123,6 +123,10 @@ layout {
     }
 }
 
+clipboard {
+    disable-primary
+}
+
 hotkey-overlay {
     skip-at-startup
 }
@@ -133,13 +137,13 @@ animations {
 
 overview {
     zoom 0.3
-    backdrop-color "#000757"
-    workspace-shadow {
-        softness 800    
-        spread   300
-        offset   x=10 y=10
-        color    "#000A"
-    }
+    //backdrop-color "#000"
+    // workspace-shadow {
+    //     softness 800    
+    //     spread   300
+    //     //offset   x=10 y=10
+    //     color    "#000A"
+    // }
 }
 
 recent-windows {
@@ -171,12 +175,42 @@ window-rule {
     clip-to-geometry true
 }
 
-layer-rule {
-    match namespace="^notifications$"
-    opacity 1.0
-    geometry-corner-radius 25
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+    open-focused false
+    default-floating-position x=32 y=32 relative-to="bottom-right"
+    default-column-width { proportion 0.3; }
+    default-window-height { proportion 0.3; }
 }
 
+// window-rule {
+//     match app-id="^wlr-which-key$"
+// }
+
+layer-rule {
+    // Match the layer-shell namespace
+    match namespace="wlr-which-key"
+
+    // 1. Apply the blur to the surface
+    // blur {
+    //     radius 15
+    //     sigma 3.0
+    // }
+
+    // 2. Darken the surface background
+    // This adds a translucent dark tint to the blurred area
+    //background-color "#00000066" 
+    
+    // 3. Optional: Shadow for extra depth
+    shadow {
+        on
+        softness 10
+        spread 20
+        color "#00000077"
+    }
+}
 
 layer-rule {
     match namespace="^wallpaper$"
@@ -184,22 +218,25 @@ layer-rule {
 }
 
 binds {
+    //FIXME: move kitty config!!! 
+    Mod+Return { spawn-sh "kitty --config ~/.config/hypr/configs/kitty/kitty.conf"; } 
+    
+    Mod+R     { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy"; }
+    
+    Mod+Space { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+Q     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+P     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+
     Ctrl+Alt+Backspace { quit; }
-    Ctrl+Alt+S         { power-off-monitors; }
-    Mod+Escape         { toggle-keyboard-shortcuts-inhibit; }
+    Ctrl+Alt+W         { spawn-sh "~/.config/niri/waybar"; }
+    Ctrl+Alt+R         { spawn-sh "~/.config/niri/autorun"; }
 
-    Ctrl+Alt+w         { spawn-sh "~/.config/niri/waybar"; }
-    Ctrl+Alt+Delete    { spawn-sh "~/.config/niri/autorun"; }
-
-    Mod+V { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons| cliphist decode | wl-copy"; }
+    Mod+V              { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons -matching fuzzy | cliphist decode | wl-copy"; }
+    Mod+B              { spawn-sh "firefox"; }
+    Mod+Shift+B        { spawn-sh "firefox --private-window"; }
 
     Mod+O       { toggle-overview; }
-
-    Mod+Return  { spawn-sh "kitty --config ~/.config/hypr/configs/kitty/kitty.conf"; } 
-    Mod+Space   { spawn-sh "pkill rofi || rofi -show drun -show-icons -matching fuzzy"; } 
-
     Mod+X       { close-window; }
-
     Mod+Z       { maximize-column; }
     Mod+Shift+Z { fullscreen-window; }
 
@@ -210,8 +247,11 @@ binds {
 
     Mod+W       { switch-preset-column-width; }
     Mod+Shift+W { switch-preset-window-height; }
+
+    // Mod+S { spawn-sh "~/.config/niri/scripts/niri-sp.sh qwe mc"; }
     
-    Mod+R       { reset-window-height; }
+    Mod+U       { spawn-sh "~/.config/niri/scripts/niri-jump-to-urgent.sh"; }
+    Mod+C       { center-window; }
 
     Mod+H       { focus-column-left; }
     Mod+J       { focus-window-or-workspace-down; }
