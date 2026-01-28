@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 URGENT_ID=$(niri msg --json windows | jq -r '.[] | select(.is_urgent == true) | .id' | head -n 1)
 

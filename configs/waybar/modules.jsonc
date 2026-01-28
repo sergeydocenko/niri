@@ -195,29 +195,29 @@
         "tooltip": false
     },
     "image#alacritty": {
-        "path": "/home/bams/.config/hypr/configs/waybar/icons/alacritty.png",
+        "path": "/home/bams/.config/niri/configs/waybar/icons/alacritty.png",
         "size": 24,
         "on-click": "alacritty"
     },
     "image#firefox": {
-        "path": "/home/bams/.config/hypr/configs/waybar/icons/firefox.png",
+        "path": "/home/bams/.config/niri/configs/waybar/icons/firefox.png",
         "size": 24,
         "on-click": "firefox",
         "on-click-right": "firefox --private-window"
     },
     "image#vscode": {
-        "path": "/home/bams/.config/hypr/configs/waybar/icons/vscode.png",
+        "path": "/home/bams/.config/niri/configs/waybar/icons/vscode.png",
         "size": 24,
         "on-click": "code"
     },
     "image#obsidian": {
-        "path": "/home/bams/.config/hypr/configs/waybar/icons/obsidian.png",
+        "path": "/home/bams/.config/niri/configs/waybar/icons/obsidian.png",
         "size": 24,
         "on-click": "obsidian"
     },
     "image#audacious": {
-        "path": "/home/bams/.config/hypr/configs/waybar/icons/audacious.png",
+        "path": "/home/bams/.config/niri/configs/waybar/icons/audacious.png",
         "size": 24,
-        "on-click": "hyprctl dispatch togglespecialworkspace SPAudacious"
+        //"on-click": "hyprctl dispatch togglespecialworkspace SPAudacious"
     }
 }

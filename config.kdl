@@ -7,6 +7,7 @@ environment {
     XDG_SESSION_DESKTOP "Niri"
     XDG_CURRENT_DESKTOP "Niri"
 
+    // https://wiki.archlinux.org/title/XDG_Base_Directory
     XDG_CONFIG_HOME "/home/bams/.config"
     XDG_CACHE_HOME  "/home/bams/.local/cache"
     XDG_DATA_HOME   "/home/bams/.local/share"
@@ -37,7 +38,9 @@ environment {
 }
 
 output "eDP-1" {
-    mode "1280x720"
+    //mode "1920x1080"
+    //mode "1280x720"
+    mode "800x600"
     scale 1.4
     transform "normal"
     position x=0 y=0
@@ -217,9 +220,41 @@ layer-rule {
     place-within-backdrop true
 }
 
+
+// window-rule {
+//     match is-focused=false
+//     opacity 0.9
+//     draw-border-with-background true
+// }
+
+
+//workspace "ndrop"
+
+window-rule {
+    match app-id="sp"
+    open-maximized-to-edges false
+    open-floating true    
+}
+
+window-rule {
+    match app-id="Terraria.bin.x86_64"
+    //open-floating true    
+    open-fullscreen true    
+    default-column-width { fixed 640;}
+	default-window-height { fixed 480;}
+}
+
+// Sp
+// https://github.com/Rouzihiro/dotfiles/blob/main/.config/niri/spawn-or-focus.sh
+
 binds {
+    
+    Mod+S { 
+        spawn-sh "~/.config/niri/scripts/spad.sh 'pizda' 'alacritty -e mc'"
+    }
+
     //FIXME: move kitty config!!! 
-    Mod+Return { spawn-sh "kitty --config ~/.config/hypr/configs/kitty/kitty.conf"; } 
+    Mod+Return { spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf"; } 
     
     Mod+R     { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy"; }
     
@@ -237,6 +272,7 @@ binds {
 
     Mod+O       { toggle-overview; }
     Mod+X       { close-window; }
+    Mod+Shift+X { spawn-sh "~/.config/niri/scripts/close-all-except-current.sh";  }
     Mod+Z       { maximize-column; }
     Mod+Shift+Z { fullscreen-window; }
 
