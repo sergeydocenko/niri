@@ -236,37 +236,24 @@ window-rule {
     open-floating true    
 }
 
-window-rule {
-    match app-id="Terraria.bin.x86_64"
-    //open-floating true    
-    open-fullscreen true    
-    default-column-width { fixed 640;}
-	default-window-height { fixed 480;}
-}
-
-// Sp
-// https://github.com/Rouzihiro/dotfiles/blob/main/.config/niri/spawn-or-focus.sh
-
 binds {
-    
-    Mod+S { 
-        spawn-sh "~/.config/niri/scripts/spad.sh 'pizda' 'alacritty -e mc'"
-    }
-
-    //FIXME: move kitty config!!! 
-    Mod+Return { spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf"; } 
-    
-    Mod+R     { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy"; }
-    
-    Mod+Space { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+Q     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+P     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
-
     Ctrl+Alt+Backspace { quit; }
     Ctrl+Alt+W         { spawn-sh "~/.config/niri/waybar"; }
     Ctrl+Alt+R         { spawn-sh "~/.config/niri/autorun"; }
 
-    Mod+V              { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons -matching fuzzy | cliphist decode | wl-copy"; }
+    // Mod+S { 
+    // }
+
+    Mod+Return { spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf"; } 
+    Mod+Space  { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
+    
+    Mod+R { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+Q { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+P { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+
+    Mod+V      { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons -matching fuzzy | cliphist decode | wl-copy"; }
+    Ctrl+Alt+V { spawn-sh "cliphist wipe && notify-send 'Clipboard Wiped!' || notify-send 'Nothing to Wipe!'"; }
+
     Mod+B              { spawn-sh "firefox"; }
     Mod+Shift+B        { spawn-sh "firefox --private-window"; }
 

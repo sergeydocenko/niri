@@ -15,8 +15,6 @@ nm-applet &
 udiskie --smart-tray --notify --automount &
 swaybg --image "$XDG_CACHE_HOME/hyprland_wallpaper.jpg" &
 wl-paste --type text --watch cliphist store &
-# Store mouse selection
-#wl-paste --primary --type text --watch cliphist store &
 mako --config "$HOME/.config/niri/configs/mako/config" &
 
 "$HOME/.config/niri/waybar"
