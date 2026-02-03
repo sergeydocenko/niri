@@ -139,7 +139,7 @@ animations {
 }
 
 overview {
-    zoom 0.3
+    zoom 0.5
     //backdrop-color "#000"
     // workspace-shadow {
     //     softness 800    
@@ -178,40 +178,27 @@ window-rule {
     clip-to-geometry true
 }
 
-// Open the Firefox picture-in-picture player as floating by default.
 window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    open-floating true
-    open-focused false
-    default-floating-position x=32 y=32 relative-to="bottom-right"
-    default-column-width { proportion 0.3; }
-    default-window-height { proportion 0.3; }
+    match app-id="code-oss"
+    match app-id="firefox"
+    match app-id="zen"
+    match at-startup=true
+    open-maximized-to-edges true
+    // border { off; }
 }
 
-// window-rule {
-//     match app-id="^wlr-which-key$"
-// }
-
-layer-rule {
-    // Match the layer-shell namespace
-    match namespace="wlr-which-key"
-
-    // 1. Apply the blur to the surface
-    // blur {
-    //     radius 15
-    //     sigma 3.0
-    // }
-
-    // 2. Darken the surface background
-    // This adds a translucent dark tint to the blurred area
-    //background-color "#00000066" 
-    
-    // 3. Optional: Shadow for extra depth
-    shadow {
-        on
-        softness 10
-        spread 20
-        color "#00000077"
+// todo
+window-rule {
+    match app-id="zen" title=r"(?i).*(deepl|translator).*"
+    open-focused true
+    open-floating true
+    min-width 800
+    min-height 600
+    max-width 800
+    max-height 600
+    border {
+        width 4
+        active-color "#ffb454"
     }
 }
 
@@ -221,52 +208,37 @@ layer-rule {
 }
 
 
-// window-rule {
-//     match is-focused=false
-//     opacity 0.9
-//     draw-border-with-background true
-// }
-
-
-//workspace "ndrop"
-
-window-rule {
-    match app-id="sp"
-    open-maximized-to-edges false
-    open-floating true    
-}
-
 binds {
     Ctrl+Alt+Backspace { quit; }
     Ctrl+Alt+W         { spawn-sh "~/.config/niri/waybar"; }
     Ctrl+Alt+R         { spawn-sh "~/.config/niri/autorun"; }
 
-    // Mod+S { 
-    // }
+    Mod+R     { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
 
-    Mod+Return { spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf"; } 
-    Mod+Space  { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
+    Mod+Space { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+Q     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+G     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'g' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+P     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
     
-    Mod+R { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+Q { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+P { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+Return { spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf"; } 
 
     Mod+V      { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons -matching fuzzy | cliphist decode | wl-copy"; }
     Ctrl+Alt+V { spawn-sh "cliphist wipe && notify-send 'Clipboard Wiped!' || notify-send 'Nothing to Wipe!'"; }
 
-    Mod+B              { spawn-sh "firefox"; }
-    Mod+Shift+B        { spawn-sh "firefox --private-window"; }
+    Mod+B              { spawn-sh "zen-browser"; }
+    Mod+Shift+B        { spawn-sh "zen-browser --private-window"; }
 
     Mod+O       { toggle-overview; }
     Mod+X       { close-window; }
-    Mod+Shift+X { spawn-sh "~/.config/niri/scripts/close-all-except-current.sh";  }
-    Mod+Z       { maximize-column; }
-    Mod+Shift+Z { fullscreen-window; }
+    
+    // TODO: Mod+Shift+X { spawn-sh "~/.config/niri/scripts/close-all-except-current.sh";  }
 
-    Mod+F       { toggle-window-floating; }
-    Mod+Shift+F { switch-focus-between-floating-and-tiling; }
-
+    Mod+Z       { maximize-window-to-edges; }
+    Mod+F       { fullscreen-window; }
     Mod+T       { toggle-column-tabbed-display; }
+
+    // Mod+F       { toggle-window-floating; }
+    // Mod+Shift+F { switch-focus-between-floating-and-tiling; }
 
     Mod+W       { switch-preset-column-width; }
     Mod+Shift+W { switch-preset-window-height; }

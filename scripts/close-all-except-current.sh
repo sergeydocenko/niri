@@ -1,50 +1,34 @@
 #!/usr/bin/env bash
 
-#
-# Close all windows in the CURRENT workspace
-# except the currently focused window.
-#
-# Requires:
-#   - niri
-#   - jq
-#
-# Safe behavior:
-#   - Only affects the focused workspace
-#   - Never closes the focused window itself
-#
+# Script to close all windows in current niri workspace except the current one
 
-set -euo pipefail
+# Get the current workspace and focused window
+current_workspace=$(niri msg -j workspaces | jq -r '.[] | select(.is_active == true) | .idx')
+focused_window=$(niri msg -j windows | jq -r '.[] | select(.is_focused == true) | .id')
 
-json="$(niri msg -j windows )"
-
-# Extract all window IDs in the currently focused workspace
-# except the focused window itself.
-#
-# jq logic:
-#   .[]                                  -> iterate workspaces
-#   select(.workspace.focused == true)  -> only current workspace
-#   .windows[]                          -> iterate its windows
-#   select(.focused == false)           -> skip focused window
-#   .id                                 -> output window id
-#
-mapfile -t windows_to_close < <(
-    jq -r '
-        .[]
-        | select(.workspace.focused == true)
-        | .windows[]
-        | select(.focused == false)
-        | .id
-    ' <<< "$json"
-)
-
-# If nothing to close, exit quietly
-if [[ "${#windows_to_close[@]}" -eq 0 ]]; then
-    exit 0
+# Check if we got valid data
+if [ -z "$current_workspace" ]; then
+    echo "Error: Could not determine current workspace"
+    exit 1
 fi
 
-# Close each window one by one
-for win_id in "${windows_to_close[@]}"; do
-    # You could add logging here if you want:
-    # echo "Closing window $win_id"
-    niri msg close-window "$win_id"
+if [ -z "$focused_window" ]; then
+    echo "Error: Could not determine focused window"
+    exit 1
+fi
+
+echo "Current workspace: $current_workspace"
+echo "Focused window ID: $focused_window"
+echo "Closing other windows..."
+
+# Get all windows in the current workspace and close them except the focused one
+niri msg -j windows | jq -r --arg ws "$current_workspace" --arg focused "$focused_window" \
+    '.[] | select(.workspace_id == ($ws | tonumber) and .id != ($focused | tonumber)) | .id' | \
+while read -r window_id; do
+    if [ -n "$window_id" ]; then
+        echo "Closing window ID: $window_id"
+        niri msg action close-window --id "$window_id"
+    fi
 done
+
+echo "Done!"

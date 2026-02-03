@@ -35,7 +35,7 @@
     },
     "niri/window": {
         /*"format": "{class} • {title}",*/
-        "format": "{title}",
+        "format": "{app_id}: {title}",
         "separate-outputs": true,
         "icon": true,
         "expand": true,

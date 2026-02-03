@@ -12,12 +12,12 @@ menu:
   - key: " "
     desc: Rofi
     cmd: "rofi -show drun -show-icons -matching fuzzy"
-  - key: "b"  
-    desc: Firefox
-    cmd: "firefox"
-  - key: "B"  
-    desc: Firefox (Private)
-    cmd: "firefox --private-window"
+  - key: "b"
+    desc: "Zen"  
+    cmd: "zen-browser"
+  - key: "B"
+    desc: "Zen (Private)"  
+    cmd: "zen-browser --private-window"
   - key: "c"
     desc: Code
     cmd: code
