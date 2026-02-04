@@ -155,7 +155,7 @@
         "format": "{}",
         "tooltip": false,
         "tooltip-format": "Weather: Lubotin",
-        "on-click": "firefox https://sinoptik.ua/погода-люботин",
+        "on-click": "xdg-open 'https://sinoptik.ua/погода-люботин'",
         "on-click-right": "~/.config/niri/configs/waybar/scripts/weather.sh notify"
     },
     "custom/close": {
