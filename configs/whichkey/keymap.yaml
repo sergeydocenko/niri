@@ -105,3 +105,6 @@ menu:
     - key: "W"
       desc: Weather in browser
       cmd: firefox https://sinoptik.ua/погода-люботин
+  - key: "t"
+    desc: "Telegram"
+    cmd: Telegramm
