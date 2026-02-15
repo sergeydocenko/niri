@@ -26,9 +26,9 @@ environment {
     QT_QPA_PLATFORMTHEME "gtk3"
     QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
-    // SDL_VIDEODRIVER "wayland,x11,*"
+    //SDL_VIDEODRIVER "wayland,x11,*"
     SDL_VIDEODRIVER "x11"
-    SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS "1"
+    SDL_VIDEO_MINIMIZE_ON_FOCUS_LOSS "0"
 
     // SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY "0"
     // SDL_VIDEODRIVER "wayland,x11,windows"
@@ -213,15 +213,16 @@ binds {
     Ctrl+Alt+W         { spawn-sh "~/.config/niri/waybar"; }
     Ctrl+Alt+R         { spawn-sh "~/.config/niri/autorun"; }
 
-    Mod+R     { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
-
-    Mod+Space { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+Q     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+G     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'g' ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+P     { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    
     Mod+Return { spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf"; } 
 
+    Mod+R       { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
+    Mod+Shift+R { spawn-sh "killall rofi || rofi -show run -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
+
+    Mod+Space { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+Q { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+G { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'g' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+P { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    
     Mod+V      { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons -matching fuzzy | cliphist decode | wl-copy"; }
     Ctrl+Alt+V { spawn-sh "cliphist wipe && notify-send 'Clipboard Wiped!' || notify-send 'Nothing to Wipe!'"; }
 
@@ -233,12 +234,12 @@ binds {
     
     // TODO: Mod+Shift+X { spawn-sh "~/.config/niri/scripts/close-all-except-current.sh";  }
 
-    Mod+Z       { maximize-window-to-edges; }
-    Mod+F       { fullscreen-window; }
-    Mod+T       { toggle-column-tabbed-display; }
+    Mod+T { toggle-column-tabbed-display; }
+    Mod+Z { maximize-window-to-edges; }
+    Mod+F { fullscreen-window; }
 
     // Mod+F       { toggle-window-floating; }
-    // Mod+Shift+F { switch-focus-between-floating-and-tiling; }
+    // Mod+Ctrl+F  { switch-focus-between-floating-and-tiling; }
 
     Mod+W       { switch-preset-column-width; }
     Mod+Shift+W { switch-preset-window-height; }

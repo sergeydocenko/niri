@@ -11,7 +11,7 @@ anchor: "center"
 menu:
   - key: " "
     desc: Rofi
-    cmd: "rofi -show drun -show-icons -matching fuzzy"
+    cmd: "rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"
   - key: "b"
     desc: "Zen"  
     cmd: "zen-browser"

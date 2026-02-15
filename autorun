@@ -6,10 +6,10 @@
 # -9,"Force kill. Sends SIGKILL, which forces the app to close immediately without saving data."
 # -w,Wait. Waits for all killed processes to actually die before the command finishes.
 
-killall -w nm-applet udiskie swaybg wl-paste mako
+killall -w nm-applet udiskie swaybg wl-paste mako xwayland-satellite
 
 # killall -w xwayland-satellite
-# xwayland-satellite &
+xwayland-satellite &
 
 nm-applet &
 udiskie --smart-tray --notify --automount &
