@@ -85,7 +85,9 @@ prefer-no-csd
 layout {
     gaps 16    
     background-color "transparent"
-    center-focused-column "never"
+
+    center-focused-column "on-overflow" //"never"
+    always-center-single-column
 
     preset-column-widths {
         proportion 0.3
