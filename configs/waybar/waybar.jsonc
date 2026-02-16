@@ -29,7 +29,7 @@
     "modules-left": [
       "image#audacious",
       "image#alacritty",
-      "image#firefox",
+      "image#zen",
       "image#vscode",
       "image#obsidian",
     ],

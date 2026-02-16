@@ -199,11 +199,11 @@
         "size": 24,
         "on-click": "alacritty"
     },
-    "image#firefox": {
-        "path": "/home/bams/.config/niri/configs/waybar/icons/firefox.png",
+    "image#zen": {
+        "path": "/home/bams/.config/niri/configs/waybar/icons/zen.png",
         "size": 24,
-        "on-click": "firefox",
-        "on-click-right": "firefox --private-window"
+        "on-click": "zen-browser",
+        "on-click-right": "zen-browser --private-window"
     },
     "image#vscode": {
         "path": "/home/bams/.config/niri/configs/waybar/icons/vscode.png",
