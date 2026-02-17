@@ -48,6 +48,7 @@ output "eDP-1" {
 
 input {
     disable-power-key-handling
+    workspace-auto-back-and-forth
     keyboard {
         xkb {
             layout "us,ru,ua"
