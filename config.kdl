@@ -157,14 +157,13 @@ animations {
 }
 
 overview {
-    zoom 0.5
-    //backdrop-color "#000"
-    // workspace-shadow {
-    //     softness 800    
-    //     spread   300
-    //     //offset   x=10 y=10
-    //     color    "#000A"
-    // }
+    zoom 0.4
+    
+    workspace-shadow {
+        softness 1000    
+        spread   80
+        color    "#000"
+    }
 }
 
 recent-windows {
@@ -206,19 +205,34 @@ window-rule {
 }
 
 // todo
+// window-rule {
+//     match app-id="zen" title=r"(?i).*(deepl|translator).*"
+//     open-focused true
+//     open-floating true
+//     min-width 800
+//     min-height 600
+//     max-width 800
+//     max-height 600
+//     border {
+//         width 4
+//         active-color "#ffb454"
+//     }
+// }
+
 window-rule {
-    match app-id="zen" title=r"(?i).*(deepl|translator).*"
+    match app-id="grave*"
     open-focused true
     open-floating true
-    min-width 800
+    min-width 1024
     min-height 600
-    max-width 800
+    max-width 1024
     max-height 600
     border {
         width 4
-        active-color "#ffb454"
+        active-color "#ffaa00"
     }
 }
+
 
 layer-rule {
     match namespace="^wallpaper$"
@@ -231,19 +245,29 @@ binds {
     Ctrl+Alt+W         { spawn-sh "~/.config/niri/waybar"; }
     Ctrl+Alt+R         { spawn-sh "~/.config/niri/autorun"; }
 
-    Mod+Return { spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf"; } 
+    Mod+Return { 
+        spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf"; 
+    } 
 
-    Mod+R       { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
-    Mod+Shift+R { spawn-sh "killall rofi || rofi -show run -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
+    // TODO: Close if open!
+    Mod+grave { 
+        spawn-sh "niri msg close grave || kitty --class grave --config ~/.config/niri/configs/kitty/kitty.conf -e tmux -f ~/.config/niri/configs/tmux/tmux.conf new-session -A -s grave"; 
+    }
 
-    Mod+Space { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+Q { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+G { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'g' ~/.config/niri/configs/whichkey/keymap.yaml"; }
-    Mod+P { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+Shift+Return { 
+        spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf -e tmux -f ~/.config/niri/configs/tmux/tmux.conf new-session -A -s default"; 
+    }
+
+    Mod+Space   { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
+    Mod+R       { spawn-sh "killall wlr-which-key || wlr-which-key ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+Q       { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'q' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+G       { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'g' ~/.config/niri/configs/whichkey/keymap.yaml"; }
+    Mod+P       { spawn-sh "killall wlr-which-key || wlr-which-key --initial-keys 'p' ~/.config/niri/configs/whichkey/keymap.yaml"; }
     
-    Mod+V      { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons -matching fuzzy | cliphist decode | wl-copy"; }
-    Ctrl+Alt+V { spawn-sh "cliphist wipe && notify-send 'Clipboard Wiped!' || notify-send 'Nothing to Wipe!'"; }
+    Mod+V       { spawn-sh "pkill rofi || cliphist list | rofi -dmenu -p  -show-icons -matching fuzzy | cliphist decode | wl-copy"; }
+    Ctrl+Alt+V  { spawn-sh "cliphist wipe && notify-send 'Clipboard Wiped!' || notify-send 'Nothing to Wipe!'"; }
 
+    Mod+A              { spawn-sh "audacious"; }
     Mod+B              { spawn-sh "zen-browser"; }
     Mod+Shift+B        { spawn-sh "zen-browser --private-window"; }
 
