@@ -127,6 +127,22 @@ layout {
         offset x=0 y=5
         color "#000"
     }
+
+    tab-indicator {
+        place-within-column
+        active-color "#fa0"
+        inactive-color "#a50"
+        length total-proportion=0.8
+        width 5
+        gap 5
+        position "left"
+    }
+
+    insert-hint {
+        // off
+        color "#ffaa0066"
+        //gradient from="#ffbb6680" to="#ffc88080" angle=45 relative-to="workspace-view"
+    }
 }
 
 clipboard {
