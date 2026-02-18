@@ -112,7 +112,7 @@ layout {
     }
 
     border {
-        width 3
+        width 5
         active-color "#fa0"
         inactive-color "#666"
         urgent-color "#F00"
