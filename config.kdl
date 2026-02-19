@@ -221,6 +221,7 @@ window-rule {
 
 window-rule {
     match app-id="grave*"
+    match app-id="newsraft"
     open-focused true
     open-floating true
     min-width 1024
@@ -256,6 +257,10 @@ binds {
 
     Mod+Shift+Return { 
         spawn-sh "kitty --config ~/.config/niri/configs/kitty/kitty.conf -e tmux -f ~/.config/niri/configs/tmux/tmux.conf new-session -A -s default"; 
+    }
+
+    Mod+N {
+        spawn-sh "killall newsraft || kitty --class newsraft --config ~/.config/niri/configs/kitty/kitty.conf -e newsraft -c ~/.config/niri/configs/newsraft/config -f ~/.config/niri/configs/newsraft/feeds"; 
     }
 
     Mod+Space   { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
