@@ -105,6 +105,7 @@ layout {
         proportion 0.25
         proportion 0.5
         proportion 0.75
+        proportion 1.0
     }
 
     focus-ring {
@@ -121,9 +122,9 @@ layout {
     shadow {
         on
         draw-behind-window false
-        softness 20
-        spread 5
-        offset x=0 y=5
+        softness 64
+        spread 16
+        offset x=4 y=4        
         color "#000"
     }
 
@@ -204,21 +205,6 @@ window-rule {
     // border { off; }
 }
 
-// todo
-// window-rule {
-//     match app-id="zen" title=r"(?i).*(deepl|translator).*"
-//     open-focused true
-//     open-floating true
-//     min-width 800
-//     min-height 600
-//     max-width 800
-//     max-height 600
-//     border {
-//         width 4
-//         active-color "#ffb454"
-//     }
-// }
-
 window-rule {
     match app-id="grave*"
     match app-id="newsraft"
@@ -228,11 +214,17 @@ window-rule {
     min-height 600
     max-width 1024
     max-height 600
-    border {
-        width 4
-        active-color "#ffaa00"
-    }
 }
+
+// window-rule {
+//     match is-focused=true
+//     opacity 1.0
+// }
+// 
+// window-rule {
+//     match is-focused=false
+//     opacity 0.95
+// }
 
 
 layer-rule {
@@ -260,7 +252,10 @@ binds {
     }
 
     Mod+N {
-        spawn-sh "killall newsraft || kitty --class newsraft --config ~/.config/niri/configs/kitty/kitty.conf -e newsraft -c ~/.config/niri/configs/newsraft/config -f ~/.config/niri/configs/newsraft/feeds"; 
+        spawn-sh r#"
+            killall newsraft ||
+            kitty --class newsraft --config ~/.config/niri/configs/kitty/kitty.conf -e newsraft -c ~/.config/niri/configs/newsraft/config -f ~/.config/niri/configs/newsraft/feeds
+        "#;
     }
 
     Mod+Space   { spawn-sh "killall rofi || rofi -show drun -show-icons -matching fuzzy -config '~/.config/niri/configs/rofi/config.rasi'"; }
