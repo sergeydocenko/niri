@@ -254,7 +254,12 @@ binds {
     Mod+N {
         spawn-sh r#"
             killall newsraft ||
-            kitty --class newsraft --config ~/.config/niri/configs/kitty/kitty.conf -e newsraft -c ~/.config/niri/configs/newsraft/config -f ~/.config/niri/configs/newsraft/feeds
+            kitty \
+                --class newsraft \
+                --config ~/.config/niri/configs/kitty/kitty.conf \
+                -e newsraft \
+                    -c ~/.config/niri/configs/newsraft/config \
+                    -f ~/.config/niri/configs/newsraft/feeds
         "#;
     }
 
