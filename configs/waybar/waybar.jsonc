@@ -4,9 +4,9 @@
     "layer": "top",
     "position": "top",
 
-    //"height": 16,
     "spacing": 0,
-    "modules-left": ["keyboard-layout","niri/workspaces"],
+    "margin": 0,
+    "modules-left": ["niri/workspaces"],
     "modules-center": ["niri/window"],
     "modules-right": [
       "custom/weather",
@@ -26,6 +26,7 @@
     "position": "bottom",
     // "height": 32,
     "spacing": 0,
+    "margin": 0,
     "modules-left": [
       "image#audacious",
       "image#alacritty",
