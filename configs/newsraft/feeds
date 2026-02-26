@@ -52,6 +52,7 @@ https://www.tecmint.com/feed/                          "Tecmint - Linux Howtos, 
 https://codeberg.org/newsraft/newsraft.atom            "codeberg.org/newsraft/newsraft"
 https://code.visualstudio.com/feed.xml                 "code.visualstudio.com"
 https://github.com/niri-wm/niri/releases.atom          "github.com/niri-wm/niri"
+https://github.com/noctalia-dev/noctalia-shell/releases.atom "github.com/noctalia-dev/noctalia-shell"
 https://github.com/alacritty/alacritty/releases.atom   "github.com/alacritty/alacritty"
 https://github.com/Alexays/Waybar/releases.atom        "github.com/Alexays/Waybar"
 https://github.com/facebook/react/releases.atom        "github.com/facebook/react"

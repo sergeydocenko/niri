@@ -344,3 +344,6 @@ binds {
 }
 
 spawn-sh-at-startup "~/.config/niri/autorun";
+
+include "./noctalia.kdl"
+

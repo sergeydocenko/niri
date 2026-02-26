@@ -6,7 +6,7 @@
 # -9,"Force kill. Sends SIGKILL, which forces the app to close immediately without saving data."
 # -w,Wait. Waits for all killed processes to actually die before the command finishes.
 
-killall -w nm-applet udiskie swaybg wl-paste mako xwayland-satellite
+killall -w nm-applet udiskie swaybg wl-paste mako xwayland-satellite qs
 
 # killall -w xwayland-satellite
 xwayland-satellite &
@@ -17,4 +17,5 @@ swaybg --image "$XDG_CACHE_HOME/hyprland_wallpaper.jpg" &
 wl-paste --type text --watch cliphist store &
 mako --config "$HOME/.config/niri/configs/mako/config" &
 
-"$HOME/.config/niri/waybar"
+# "$HOME/.config/niri/waybar"
+qs -c noctalia-shell --no-duplicate
